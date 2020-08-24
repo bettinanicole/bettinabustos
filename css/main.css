@@ -204,7 +204,7 @@ body {
   margin-left: -60px;
 }
 a {
-	color: #808080  ;
+	color: #808080;
 	font-weight: bold;
 	font-family: helvetica;
 	text-decoration: none;
@@ -212,10 +212,10 @@ a {
 	-moz-transition: color .1s ease-in-out;
 	-webkit-transition: color .1s ease-in-out;
 	-o-transition: color .1s ease-in-out;
-	
 }
+
 a:hover {
-	color: #2F4F4F  ;
+	color: #2F4F4F;
 	transition: color .2s ease-in-out;
 	-moz-transition: color .2s ease-in-out;
 	-webkit-transition: color .2s ease-in-out;
