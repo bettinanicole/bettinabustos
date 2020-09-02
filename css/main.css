@@ -69,6 +69,12 @@ p {
     transform: translateY(-8px);
   }
 }
+
+.brain {
+ position:absolute;
+ right: 0;
+}
+
 .hvr-bob {
   display: inline-block;
   vertical-align: middle;
