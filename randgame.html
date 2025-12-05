@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Impostor Game</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  #setup-section {
+    margin-bottom: 20px;
+  }
+
+  .player-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .player-row input {
+    padding: 5px 8px;
+  }
+
+  .toggle-btn {
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+
+  #player-buttons {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .player-button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #ffffff;
+    cursor: pointer;
+    min-width: 120px;
+  }
+
+  #round-label {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  #next-round-btn,
+  #restart-btn {
+    margin-top: 12px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .small-note {
+    font-size: 0.85rem;
+    color: #555;
+  }
+
+  /* Overlay for reveal */
+  #reveal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  #reveal-content {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 240px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  #reveal-content h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .big-word {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <h1>Word Impostor</h1>
+
+  <!-- SETUP AREA -->
+  <div id="setup-section">
+    <label for="num-players">Number of Players:</label>
+    <input type="number" id="num-players" min="2" value="3">
+    <div id="player-word-inputs"></div>
+    <p class="small-note">
+      Hide your answer sillies.
+    </p>
+    <button onclick="startGame()">Start Game</button>
+  </div>
+
+  <!-- GAME AREA -->
+  <div id="game-section" style="display:none;">
+    <div id="round-label"></div>
+    <p class="small-note">Tap your name to secretly see your word. It shows for 3 seconds.</p>
+    <div id="player-buttons"></div>
+    <button id="next-round-btn" onclick="nextRound()">Next Round</button>
+    <br>
+    <button id="restart-btn" onclick="restartGame()">Restart Game</button>
+  </div>
+
+  <!-- REVEAL OVERLAY -->
+  <div id="reveal-overlay">
+    <div id="reveal-content"></div>
+  </div>
+
+<script>
+  // Colors for player buttons (looped through)
+  const PLAYER_COLORS = [
+    '#e57373', '#64b5f6', '#81c784', '#ffb74d',
+    '#ba68c8', '#4db6ac', '#9575cd', '#f06292'
+  ];
+
+  let players = [];          // { index, name, word }
+  let wordPool = [];         // [{ word, ownerIdx }]
+  let totalRounds = 0;
+  let currentRoundNumber = 0;  // 1-based for display
+  let currentRealWord = '';
+  let currentImpostorIndex = -1;
+  let lastPlayerCount = 3;   // remember last valid player count
+
+  // Create / update player inputs WITHOUT overwriting existing entries
+  function createPlayerWordInputs(numPlayers) {
+    const container = document.getElementById('player-word-inputs');
+
+    // Save current values from existing inputs
+    const savedNames = {};
+    const savedWords = {};
+    let i = 1;
+    while (true) {
+      const nameEl = document.getElementById('player_' + i + '_name');
+      const wordEl = document.getElementById('player_' + i + '_word');
+      if (!nameEl && !wordEl) break; // no more existing inputs
+      if (nameEl) savedNames[i] = nameEl.value;
+      if (wordEl) savedWords[i] = wordEl.value;
+      i++;
+    }
+
+    // Clear container and rebuild
+    container.innerHTML = '';
+
+    for (let j = 1; j <= numPlayers; j++) {
+      const row = document.createElement('div');
+      row.className = 'player-row';
+
+      const nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.id = 'player_' + j + '_name';
+      nameInput.placeholder = 'Player ' + j + ' name';
+      nameInput.value = savedNames[j] || '';
+
+      const wordInput = document.createElement('input');
+      // HIDDEN WORD FIELD so others can’t read it
+      wordInput.type = 'password';
+      wordInput.id = 'player_' + j + '_word';
+      wordInput.placeholder = 'Player ' + j + ' word/phrase';
+      wordInput.value = savedWords[j] || '';
+
+      const toggleBtn = document.createElement('button');
+      toggleBtn.type = 'button';
+      toggleBtn.className = 'toggle-btn';
+      toggleBtn.textContent = 'Show';
+
+      toggleBtn.onclick = (function(field, btn) {
+        return function() {
+          if (field.type === 'password') {
+            field.type = 'text';
+            btn.textContent = 'Hide';
+          } else {
+            field.type = 'password';
+            btn.textContent = 'Show';
+          }
+        };
+      })(wordInput, toggleBtn);
+
+      row.appendChild(nameInput);
+      row.appendChild(wordInput);
+      row.appendChild(toggleBtn);
+      container.appendChild(row);
+    }
+  }
+
+  function startGame() {
+    const numPlayers = parseInt(document.getElementById('num-players').value, 10);
+    players = [];
+
+    if (!Number.isInteger(numPlayers) || numPlayers < 2) {
+      alert('Need at least 2 players.');
+      return;
+    }
+
+    for (let i = 1; i <= numPlayers; i++) {
+      const nameField = document.getElementById('player_' + i + '_name');
+      const wordField = document.getElementById('player_' + i + '_word');
+
+      const name = (nameField.value || ('Player ' + i)).trim();
+      const word = (wordField.value || '').trim();
+
+      if (word === '') {
+        alert('Please enter a word/phrase for Player ' + i);
+        return;
+      }
+
+      players.push({ index: i - 1, name, word });
+    }
+
+    // Build a pool of words: one per player
+    wordPool = players.map((p, idx) => ({
+      word: p.word,
+      ownerIdx: idx
+    }));
+
+    // Shuffle wordPool (Fisher–Yates) so the order of words is random
+    for (let i = wordPool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [wordPool[i], wordPool[j]] = [wordPool[j], wordPool[i]];
+    }
+
+    totalRounds = wordPool.length;
+    currentRoundNumber = 0;
+
+    // Create player buttons (same every round)
+    const buttonsDiv = document.getElementById('player-buttons');
+    buttonsDiv.innerHTML = '';
+
+    players.forEach((player, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'player-button';
+      btn.textContent = player.name;
+
+      const color = PLAYER_COLORS[idx % PLAYER_COLORS.length];
+      btn.style.backgroundColor = color;
+
+      btn.onclick = function () {
+        const isImpostor = (idx === currentImpostorIndex);
+        showReveal(player.name, isImpostor, color);
+      };
+
+      buttonsDiv.appendChild(btn);
+    });
+
+    // Hide setup, show game
+    document.getElementById('setup-section').style.display = 'none';
+    document.getElementById('game-section').style.display = 'block';
+    document.getElementById('next-round-btn').disabled = false;
+
+    // Start first round
+    startRound();
+  }
+
+  function startRound() {
+    if (wordPool.length === 0) {
+      alert('All rounds are finished!');
+      document.getElementById('next-round-btn').disabled = true;
+      return;
+    }
+
+    // Take one random word from the remaining pool
+    // (since wordPool is already shuffled, we can pop from the end)
+    const currentEntry = wordPool.pop();
+    currentRealWord = currentEntry.word;
+
+    // Update round number for display
+    currentRoundNumber = totalRounds - wordPool.length;
+
+    // Choose impostor: ANY player (doesn't have to be the word's owner)
+    const numPlayers = players.length;
+    currentImpostorIndex = Math.floor(Math.random() * numPlayers);
+
+    // Update round label
+    const label = document.getElementById('round-label');
+    label.textContent = 'Round ' + currentRoundNumber +
+                        ' of ' + totalRounds;
+  }
+
+  function nextRound() {
+    if (wordPool.length === 0) {
+      alert('Game over! All players’ words have been used.');
+      document.getElementById('next-round-btn').disabled = true;
+      return;
+    }
+    startRound();
+  }
+
+  function showReveal(playerName, isImpostor, color) {
+    const overlay = document.getElementById('reveal-overlay');
+    const content = document.getElementById('reveal-content');
+
+    content.innerHTML = '';
+
+    const title = document.createElement('h2');
+    title.textContent = playerName;
+    title.style.color = color;
+    content.appendChild(title);
+
+    const message = document.createElement('p');
+    if (isImpostor) {
+      message.innerHTML = '<strong>You are the IMPOSTOR!</strong><br>' +
+                          '<span class="small-note">BE cool!</span>';
+    } else {
+      message.innerHTML = 'Your word is:<br>' +
+                          '<span class="big-word">' + currentRealWord + '</span>';
+    }
+    content.appendChild(message);
+
+    overlay.style.display = 'flex';
+
+    // Hide after 3 seconds
+    setTimeout(function () {
+      overlay.style.display = 'none';
+    }, 3000);
+  }
+
+  function restartGame() {
+    // Reset all state and go back to setup
+    players = [];
+    wordPool = [];
+    totalRounds = 0;
+    currentRoundNumber = 0;
+    currentRealWord = '';
+    currentImpostorIndex = -1;
+
+    document.getElementById('game-section').style.display = 'none';
+    document.getElementById('setup-section').style.display = 'block';
+    document.getElementById('player-buttons').innerHTML = '';
+    document.getElementById('round-label').textContent = '';
+    document.getElementById('next-round-btn').disabled = false;
+  }
+
+  // Initialize inputs on page load (with mobile-friendly number handling)
+  document.addEventListener('DOMContentLoaded', function () {
+    const numInput = document.getElementById('num-players');
+
+    // Initial setup
+    createPlayerWordInputs(lastPlayerCount);
+    numInput.value = lastPlayerCount;
+
+    // On input: only react when there's a valid integer
+    numInput.addEventListener('input', function () {
+      const raw = numInput.value;
+
+      // If the field is temporarily empty while editing, do nothing
+      if (raw === '') {
+        return;
+      }
+
+      let n = parseInt(raw, 10);
+
+      if (!Number.isInteger(n)) {
+        return; // ignore weird input
+      }
+
+      if (n < 2) {
+        n = 2;
+      }
+
+      lastPlayerCount = n;
+      createPlayerWordInputs(n);
+    });
+
+    // On blur: if user leaves it blank, restore last valid value
+    numInput.addEventListener('blur', function () {
+      if (numInput.value === '') {
+        numInput.value = lastPlayerCount;
+      }
+    });
+  });
+</script>
+</body>
+</html>
