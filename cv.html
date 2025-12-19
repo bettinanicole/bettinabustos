@@ -1,55 +1,78 @@
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link href="main.css" rel="stylesheet" type="text/css"></link></head>
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Avenir next";}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-p.small {
-  line-height: 0.7; }
-p.big {
-  line-height: 1.8; }
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link href="main.css" rel="stylesheet" type="text/css">
 
-</style>
-	<head>
-		<meta charset="utf-8">
-		<meta name="description" content="Bettina Bustos cognitive neuroscience. Interests: cognitive control, decision-making and attention. ">
-		<title>CV</title>
-	</head>
-<body style="background-color: gray;" style="margin-left:125px">
-		<header style="left:normal;color: #373737;">
-			<nav>
-				<ul style = "font-size:140%">
-					<a href="index.html" class="w3-button w3-bar-item">Bettina Bustos</a>
-					<a href="cv.html" class="w3-button w3-bar-item">CV</a>
-					<a href="other.html" class="w3-button w3-bar-item">Other</a>
-          <img src="Brain.vector.white.png" style = "max-width:10%;max-height:10%;float:right;">
+  <meta name="description" content="Bettina Bustos cognitive neuroscience. Interests: cognitive control, decision-making and attention.">
+  <title>CV</title>
 
-				</ul>
-			</nav>
-		</header>
+  <style>
+    html, body, h1, h2, h3, h4, h5, h6 { font-family: "Avenir Next", sans-serif; }
 
-<html>
-<body style="background-color: gray;">
+    body {
+      background-color: gray;
+      margin: 0;
+    }
 
-  <head>
-    <title>CV</title>
-    <style>
-      .content {
-        overflow: auto;
-        /* border: 3px solid #666; */
-				justify: center;
-      }
+    /* Make a real page layout: header + viewer fills remaining screen */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-    </style>
-  </head>
-    <div class="sub_cont">
-      <iframe src="BB_CV.pdf" width="100%" height="100%"> </iframe>
+    .viewer-wrap {
+      flex: 1;                 /* fill remaining height */
+      min-height: 0;           /* IMPORTANT for flex children scrolling */
+      padding: 10px;
+    }
 
+    .pdf-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 8px;
 
-        <!-- <embed src="BB_CV.pdf" type="application/pdf" width="100%" height="100%"> -->
+      /* helps on iOS */
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
 
-    </div>
-  </body>
+    /* Optional: slightly smaller header on phones */
+    @media (max-width: 768px) {
+      .viewer-wrap { padding: 6px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="w3-bar w3-theme-black">
+      <nav class="w3-bar">
+        <a href="index.html" class="w3-button w3-bar-item">Bettina Bustos</a>
+        <a href="cv.html" class="w3-button w3-bar-item">CV</a>
+        <a href="other.html" class="w3-button w3-bar-item">Other</a>
+        <img src="Brain.vector.white.png" style="max-height:40px; float:right;">
+      </nav>
+    </header>
+
+    <main class="viewer-wrap">
+      <iframe class="pdf-frame" src="BB_CV.pdf"></iframe>
+
+      <!-- Fallback link (some mobile browsers block inline PDF) -->
+      <p style="margin-top:10px; text-align:center;">
+        <a href="BB_CV.pdf" class="w3-button w3-white w3-border" target="_blank" rel="noopener">
+          Open CV PDF
+        </a>
+      </p>
+    </main>
+
+  </div>
+</body>
 </html>
