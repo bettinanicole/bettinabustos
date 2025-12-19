@@ -146,6 +146,16 @@ h2 {
   max-width: 100%;
   opacity: 0.85;
 }
+/* Fix extra top gap */
+.sub_cont {
+  margin-top: 1.5%;
+}
+
+/* Give text breathing room from the left */
+.wrapper,
+.box {
+  padding-left: 2.5%;
+}
 
 .social-icons img:hover {
   opacity: 1;
