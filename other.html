@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bettina Bustos cognitive neuroscience. Interests: cognitive control, decision-making and attention.">
-  <title>Bettina's Website</title>
+
+  <meta name="description"
+        content="Bettina Bustos cognitive neuroscience. Interests: cognitive control, decision-making and attention.">
+
+  <title>Bettina Bustos | Other</title>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -16,35 +19,35 @@
       font-family: "Avenir Next", sans-serif;
     }
 
-    p.small {
-      line-height: 0.7;
-    }
-
-    p.big {
-      line-height: 1.8;
-    }
+    p.small { line-height: 0.7; }
+    p.big { line-height: 1.8; }
 
     .content {
       overflow: auto;
-      /* border: 3px solid #666; */
       justify-content: center;
     }
   </style>
 </head>
 
-<body style="background-color: gray; margin-left: 125px;">
+<body style="background-color: gray;">
 
-  <!-- HEADER / NAV -->
-  <header style="color: #373737;">
-    <nav style="margin-left: -5%;">
+  <!-- HEADER / NAV — MATCHES INDEX -->
+  <header class="w3-bar w3-theme-black">
+    <nav class="w3-bar">
       <a href="index.html" class="w3-button w3-bar-item">Bettina Bustos</a>
-		<a href="cv.html" class="w3-button w3-bar-item">CV</a>
+      <a href="BB_CV.pdf" class="w3-button w3-bar-item" target="_blank" rel="noopener">CV</a>
       <a href="other.html" class="w3-button w3-bar-item">Other</a>
+
+      <img src="Brain.vector.white.png"
+           class="brain"
+           alt="brain icon"
+           style="max-height:40px; float:right;">
     </nav>
   </header>
 
   <!-- MAIN CONTENT -->
   <div class="sub_cont">
+
     <div class="wrapper">
       <div class="box header">
         Resources that I have benefited from:
@@ -55,7 +58,7 @@
         <ul>
           <li>
             <a href="https://cheatsheets.quantecon.org/" target="_blank">
-              MATLAB - Python - Julia cheatsheet
+              MATLAB – Python – Julia cheatsheet
             </a>
             &nbsp;Basic functions and their conversions for each language.
           </li>
@@ -72,7 +75,6 @@
             &nbsp;Javascript library for running behavioral experiments in a web browser.
           </li>
         </ul>
-        <br>
       </div>
 
       <div class="box sidebar2">
@@ -87,7 +89,6 @@
           </li>
         </ul>
       </div>
-
 
       <div class="box footer">
         <br>
@@ -105,6 +106,7 @@
         </li>
       </ul>
     </div>
+
   </div>
 
 </body>
