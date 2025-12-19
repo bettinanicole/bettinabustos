@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 
-  <!-- Your CSS -->
+  <!-- Your main CSS -->
   <link href="css/main.css" rel="stylesheet" type="text/css">
 
   <style>
@@ -25,54 +25,70 @@
       margin: 0;
     }
 
-    /* ===== Layout ===== */
-    main#boxes {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2%;
-      display: grid;
-      grid-template-columns: 1fr 3fr; /* LEFT small, RIGHT large */
-      gap: 4%;
+    /* Main content wrapper (normal page scroll) */
+    #boxes {
+      width: 95%;
+      margin: 2% auto;
+      overflow: hidden; /* clears floats */
     }
 
-    /* ===== Left column ===== */
+    /* LEFT column */
     #column1 {
-      align-self: start;
+      float: left;
+      width: 25%;
+      padding: 1% 2%;
+      box-sizing: border-box;
     }
 
-    #column1 img.profile-photo {
+    /* RIGHT column (text takes most space) */
+    #column2 {
+      float: left;
+      width: 70%;
+      padding: 1% 4%;
+      box-sizing: border-box;
+      font-size: 120%;
+      color: #373737;
+    }
+
+    /* Photo */
+    .profile-photo {
+      display: block;
       max-width: 100%;
       height: auto;
-      display: block;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
-    /* Social icons */
-    .social-icons {
+    /* Icon layout (simple, like before) */
+    .icon-block {
+      margin-top: 6px;
+    }
+
+    .icon-row {
       white-space: nowrap;
+      margin-top: 6px;
     }
 
-    .social-icons img {
-      height: 30px;
+    .icon-row img {
+      height: 28px;
       width: auto;
       margin-right: 14px;
       vertical-align: middle;
     }
 
-    /* ===== Right column (TEXT) ===== */
-    #column2 {
-      font-size: 120%;
-      color: #373737;
-    }
-
-    /* ===== Mobile ===== */
+    /* Mobile: stack columns */
     @media (max-width: 800px) {
-      main#boxes {
-        grid-template-columns: 1fr;
+      #column1,
+      #column2 {
+        float: none;
+        width: 100%;
       }
 
-      .social-icons img {
-        height: 26px;
+      #column2 {
+        padding: 4% 2%;
+      }
+
+      .icon-row img {
+        height: 24px;
         margin-right: 10px;
       }
     }
@@ -106,38 +122,43 @@
 
 <main id="boxes">
 
-  <!-- ===== LEFT ===== -->
+  <!-- LEFT -->
   <div id="column1">
 
     <img src="imgs/bbsite.png"
          alt="headshot"
          class="profile-photo">
 
-    <div class="social-icons">
-      <a href="mailto:bbustos@uiowa.edu">
-        <img src="imgs/email_i.png" class="hvr-bob" alt="Email">
-      </a>
+    <div class="icon-block">
 
-      <a href="https://github.com/bettinanicole">
-        <img src="imgs/gits.png" class="hvr-bob" alt="GitHub">
-      </a>
+      <div class="icon-row">
+        <a href="mailto:bbustos@uiowa.edu">
+          <img src="imgs/email_i.png" class="hvr-bob" alt="Email">
+        </a>
 
-      <a href="https://osf.io/5r34d/">
-        <img src="imgs/opensci.png" class="hvr-bob" alt="OSF">
-      </a>
+        <a href="https://github.com/bettinanicole">
+          <img src="imgs/gits.png" class="hvr-bob" alt="GitHub">
+        </a>
 
-      <a href="https://scholar.google.com/citations?user=i1YvwNEAAAAJ&hl=en">
-        <img src="imgs/googlescholar_i.svg" class="hvr-bob" alt="Google Scholar">
-      </a>
+        <a href="https://osf.io/5r34d/">
+          <img src="imgs/opensci.png" class="hvr-bob" alt="OSF">
+        </a>
+      </div>
 
-      <a href="https://twitter.com/bettina_nb">
-        <img src="imgs/twitter.png" class="hvr-bob" alt="Twitter">
-      </a>
+      <div class="icon-row">
+        <a href="https://scholar.google.com/citations?user=i1YvwNEAAAAJ&hl=en">
+          <img src="imgs/googlescholar_i.svg" class="hvr-bob" alt="Google Scholar">
+        </a>
+
+        <a href="https://twitter.com/bettina_nb">
+          <img src="imgs/twitter.png" class="hvr-bob" alt="Twitter">
+        </a>
+      </div>
+
     </div>
-
   </div>
 
-  <!-- ===== RIGHT ===== -->
+  <!-- RIGHT -->
   <div id="column2">
 
     <p>
