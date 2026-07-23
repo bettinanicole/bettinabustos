@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Bettina Bustos</title>
   <meta charset="UTF-8">
@@ -10,31 +10,236 @@
   <link href="css/main.css" rel="stylesheet" type="text/css">
 
   <style>
-    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Avenir next";}
-    p.small { line-height: 0.7; }
-    p.big { line-height: 1.8; }
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Avenir Next", Avenir, Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: gray;
+    }
+
+    p.small {
+      line-height: 0.7;
+    }
+
+    p.big {
+      line-height: 1.8;
+    }
+
+    /* Navigation */
+    header {
+      color: #373737;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 8px 16px;
+      font-size: 140%;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+    }
+
+    .brain {
+      width: 90px;
+      max-width: 15%;
+      height: auto;
+      margin-left: auto;
+    }
+
+    /* Main two-column area */
+    #boxes {
+      display: flex;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    #column1 {
+      width: 30%;
+      padding: 1% 2%;
+      box-sizing: border-box;
+    }
+
+    #column2 {
+      width: 70%;
+      padding: 0 4%;
+      box-sizing: border-box;
+      font-size: 120%;
+      color: #373737;
+    }
+
+    .headshot {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .icon-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .icon-row a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-row img {
+      width: 55px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    #column2 a {
+      overflow-wrap: anywhere;
+    }
+
+    /* Mobile layout */
+    @media screen and (max-width: 700px) {
+      nav ul {
+        justify-content: center;
+        padding: 6px;
+        font-size: 105%;
+      }
+
+      nav .w3-button {
+        padding: 8px 10px;
+      }
+
+      .brain {
+        width: 50px;
+        max-width: 12%;
+        margin-left: 4px;
+      }
+
+      #boxes {
+        display: block;
+      }
+
+      #column1,
+      #column2 {
+        width: 100%;
+        float: none;
+      }
+
+      #column1 {
+        padding: 12px 20px 4px;
+      }
+
+      .headshot {
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+      }
+
+      .icon-row {
+        gap: 18px;
+      }
+
+      .icon-row img {
+        width: 48px;
+      }
+
+      #column2 {
+        padding: 8px 20px 24px;
+        font-size: 105%;
+        line-height: 1.55;
+      }
+
+      #column2 p {
+        margin-top: 12px;
+        margin-bottom: 16px;
+      }
+    }
+
+    /* Extra-small phones */
+    @media screen and (max-width: 400px) {
+      nav ul {
+        font-size: 95%;
+      }
+
+      nav .w3-button {
+        padding: 7px 6px;
+      }
+
+      .brain {
+        display: none;
+      }
+
+      #column1,
+      #column2 {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      #column2 {
+        font-size: 100%;
+      }
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDG2L2PX2F"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-WDG2L2PX2F');
-    gtag('config', 'UA-176558264-1');
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag("js", new Date());
+    gtag("config", "G-WDG2L2PX2F");
+    gtag("config", "UA-176558264-1");
   </script>
 </head>
 
-<body style="background-color: gray;">
+<body>
 
-<header style="left:normal;color: #373737;">
+<header>
   <nav>
-    <ul style="font-size:140%">
-      <a href="index.html" class="w3-button w3-bar-item">Bettina Bustos</a>
-      <a href="BB_CV.pdf" class="w3-button w3-bar-item" target="_blank" rel="noopener">CV</a>
-      <a href="other.html" class="w3-button w3-bar-item">Other</a>
-      <img src="Brain.vector.white.png" class="brain" style="max-width:15%;max-height:15%;">
+    <ul>
+      <li>
+        <a href="index.html" class="w3-button w3-bar-item">Bettina Bustos</a>
+      </li>
+
+      <li>
+        <a href="BB_CV.pdf"
+           class="w3-button w3-bar-item"
+           target="_blank"
+           rel="noopener">
+          CV
+        </a>
+      </li>
+
+      <li>
+        <a href="other.html" class="w3-button w3-bar-item">Other</a>
+      </li>
+
+      <li class="brain">
+        <img src="Brain.vector.white.png"
+             alt=""
+             style="width:100%; height:auto;">
+      </li>
     </ul>
   </nav>
 </header>
@@ -42,104 +247,158 @@
 <main id="boxes">
 
   <!-- LEFT COLUMN -->
-  <div id="column1" style="float:left; height:auto; padding:1% 2%;">
+  <div id="column1">
 
     <img src="imgs/bbsite.png"
-         alt="headshot"
-         style="float:left; max-width:100%; max-height:100%;">
+         alt="Headshot of Bettina Bustos"
+         class="headshot">
 
     <!-- ICON ROW 1 -->
-    <div style="text-align:center; margin-top:8px;">
-      <a href="mailto:bbustos@uiowa.edu">
-        <img src="imgs/email_i.png" class="hvr-bob" style="max-width:18%; max-height:20%;">
+    <div class="icon-row">
+      <a href="mailto:bbustos@uiowa.edu"
+         aria-label="Email Bettina Bustos">
+        <img src="imgs/email_i.png"
+             class="hvr-bob"
+             alt="Email">
       </a>
 
-      <a href="https://github.com/bettinanicole">
-        <img src="imgs/gits.png" class="hvr-bob" style="max-width:18%; max-height:20%;">
+      <a href="https://github.com/bettinanicole"
+         target="_blank"
+         rel="noopener"
+         aria-label="GitHub profile">
+        <img src="imgs/gits.png"
+             class="hvr-bob"
+             alt="GitHub">
       </a>
 
-      <a href="https://osf.io/5r34d/">
-        <img src="imgs/opensci.png" class="hvr-bob" style="max-width:18%; max-height:20%;">
+      <a href="https://osf.io/5r34d/"
+         target="_blank"
+         rel="noopener"
+         aria-label="Open Science Framework profile">
+        <img src="imgs/opensci.png"
+             class="hvr-bob"
+             alt="Open Science Framework">
       </a>
     </div>
 
     <!-- ICON ROW 2 -->
-    <div style="text-align:center; margin-top:6px;">
-      <a href="https://twitter.com/bettina_nb">
-        <img src="imgs/twitter.png" class="hvr-bob" style="max-width:20%; max-height:20%;">
+    <div class="icon-row">
+      <a href="https://twitter.com/bettina_nb"
+         target="_blank"
+         rel="noopener"
+         aria-label="Twitter profile">
+        <img src="imgs/twitter.png"
+             class="hvr-bob"
+             alt="Twitter">
       </a>
 
-      <a href="https://scholar.google.com/citations?user=i1YvwNEAAAAJ&hl=en">
-        <img src="imgs/googlescholar_i.svg" class="hvr-bob" style="max-width:20%; max-height:20%;">
+      <a href="https://scholar.google.com/citations?user=i1YvwNEAAAAJ&hl=en"
+         target="_blank"
+         rel="noopener"
+         aria-label="Google Scholar profile">
+        <img src="imgs/googlescholar_i.svg"
+             class="hvr-bob"
+             alt="Google Scholar">
       </a>
     </div>
 
-  </div> 
+  </div>
 
   <!-- RIGHT COLUMN -->
-  <div id="column2"
-       style="font-size:120%; color:#373737; float:left; height:auto; padding:0 4%;">
+  <div id="column2">
 
     <p>
-      I am currently a Ph.D student in Jiefeng Jiang's
+      I am currently a Ph.D. student in Jiefeng Jiang's
       <a href="https://myweb.uiowa.edu/jiefjiang/Research.html"
-         class="hvr-bob" style="color: bacfcd" target="_blank">
+         class="hvr-bob"
+         style="color:#BACFCD;"
+         target="_blank"
+         rel="noopener">
         <i><span>Lab for Adaptive Behavior</span></i>
       </a>
-      in the Dept of Psychological and Brain Sciences at UIowa.
+      in the Department of Psychological and Brain Sciences at UIowa.
+
       Here, I am a member of the
       <a href="https://psychology.uiowa.edu/bbip"
-         class="hvr-bob" style="color: bacfcd" target="_blank">
-        <span>Behavioral-Biomedical Training program</span>
+         class="hvr-bob"
+         style="color:#BACFCD;"
+         target="_blank"
+         rel="noopener">
+        <span>Behavioral-Biomedical Training Program</span>
       </a>
       and the
       <a href="https://cognitivecontrol.psychology.uiowa.edu/"
-         class="hvr-bob" style="color: bacfcd" target="_blank">
+         class="hvr-bob"
+         style="color:#BACFCD;"
+         target="_blank"
+         rel="noopener">
         <span>C<sup>3</sup> (Cognitive Control Collaborative)</span>
       </a>.
-      Broadly, I study learning and memory, and how costs for control guide adaptive behavior and information storage through behavioral experiments, neuroimaging and computational modeling. In the Fall I will be starting as a 
-<a href="https://sof.dartmouth.edu/"
-   class="hvr-bob"
-   style="color:#004C3F"
-   target="_blank">
-  <span>Society of Fellows (SoF)</span>
-</a>
-postdoc at 
-<span style="color:#004C3F; font-weight:600;">Dartmouth College</span> 
-working with Jonathan Phillips and Steven Frankland.
+
+      Broadly, I study learning and memory, and how costs for control guide
+      adaptive behavior and information storage through behavioral experiments,
+      neuroimaging, and computational modeling.
+
+      In the fall, I will be starting as a
+      <a href="https://sof.dartmouth.edu/"
+         class="hvr-bob"
+         style="color:#004C3F;"
+         target="_blank"
+         rel="noopener">
+        <span>Society of Fellows (SoF)</span>
+      </a>
+      postdoc at
+      <span style="color:#004C3F; font-weight:600;">
+        Dartmouth College
+      </span>
+      working with Jonathan Phillips and Steven Frankland.
     </p>
 
     <p>
       Previously, I was a lab manager at Wouter Kool's
       <a href="http://www.wouterkool.com/"
-         class="hvr-bob" style="color: bacfcd" target="_blank">
+         class="hvr-bob"
+         style="color:#BACFCD;"
+         target="_blank"
+         rel="noopener">
         <i><span>Control and Decision-Making Lab</span></i>
       </a>
       at WashU.
     </p>
 
     <p>
-      Before that, I worked on a longitudinal aging study at the University of Pittsburgh,
-      and studied
+      Before that, I worked on a longitudinal aging study at the University
+      of Pittsburgh and studied
       <a href="https://liberalarts.utexas.edu/psychology/"
-         class="link2" style="color:813400" target="_blank">
+         class="link2"
+         style="color:#813400;"
+         target="_blank"
+         rel="noopener">
         <span>Psychology</span>
       </a>
       at
       <a href="https://www.utexas.edu/"
-         class="link2" style="color:813400" target="_blank">
+         class="link2"
+         style="color:#813400;"
+         target="_blank"
+         rel="noopener">
         <span>UT Austin</span>
       </a>
-      with an emphasis in Cognitive Neuroscience, and worked as an RA in
+      with an emphasis in cognitive neuroscience. I also worked as an RA in
       <a href="https://www.lewpealab.org/"
-         class="link2" style="color:813400" target="_blank">
+         class="link2"
+         style="color:#813400;"
+         target="_blank"
+         rel="noopener">
         <span>Jarrod Lewis-Peacock's Lab</span>
       </a>.
     </p>
 
     <p>
       See the
-      <a href="other.html" class="link" style="color: bacfcd">
+      <a href="other.html"
+         class="link"
+         style="color:#BACFCD;">
         <span>Other</span>
       </a>
       page for links to resources I've enjoyed and benefited from.
