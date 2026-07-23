@@ -60,7 +60,13 @@
       margin-left: auto;
     }
 
-    /* Main two-column area */
+    .brain img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Desktop layout: same two-column appearance */
     #boxes {
       display: flex;
       align-items: flex-start;
@@ -74,6 +80,7 @@
       width: 30%;
       padding: 1% 2%;
       box-sizing: border-box;
+      flex-shrink: 0;
     }
 
     #column2 {
@@ -114,7 +121,7 @@
       overflow-wrap: anywhere;
     }
 
-    /* Mobile layout */
+    /* Phone layout */
     @media screen and (max-width: 700px) {
       nav ul {
         justify-content: center;
@@ -132,8 +139,11 @@
         margin-left: 4px;
       }
 
+      /* Stack image, links, and text vertically */
       #boxes {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
       }
 
       #column1,
@@ -142,8 +152,17 @@
         float: none;
       }
 
+      /* Image and links appear above the main text */
       #column1 {
-        padding: 12px 20px 4px;
+        order: 1;
+        padding: 12px 20px 6px;
+      }
+
+      #column2 {
+        order: 2;
+        padding: 8px 20px 24px;
+        font-size: 105%;
+        line-height: 1.55;
       }
 
       .headshot {
@@ -154,16 +173,11 @@
 
       .icon-row {
         gap: 18px;
+        margin-top: 10px;
       }
 
       .icon-row img {
         width: 48px;
-      }
-
-      #column2 {
-        padding: 8px 20px 24px;
-        font-size: 105%;
-        line-height: 1.55;
       }
 
       #column2 p {
@@ -195,11 +209,20 @@
       #column2 {
         font-size: 100%;
       }
+
+      .icon-row {
+        gap: 14px;
+      }
+
+      .icon-row img {
+        width: 44px;
+      }
     }
   </style>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDG2L2PX2F"></script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -219,7 +242,9 @@
   <nav>
     <ul>
       <li>
-        <a href="index.html" class="w3-button w3-bar-item">Bettina Bustos</a>
+        <a href="index.html" class="w3-button w3-bar-item">
+          Bettina Bustos
+        </a>
       </li>
 
       <li>
@@ -232,13 +257,13 @@
       </li>
 
       <li>
-        <a href="other.html" class="w3-button w3-bar-item">Other</a>
+        <a href="other.html" class="w3-button w3-bar-item">
+          Other
+        </a>
       </li>
 
       <li class="brain">
-        <img src="Brain.vector.white.png"
-             alt=""
-             style="width:100%; height:auto;">
+        <img src="Brain.vector.white.png" alt="">
       </li>
     </ul>
   </nav>
@@ -246,7 +271,8 @@
 
 <main id="boxes">
 
-  <!-- LEFT COLUMN -->
+  <!-- LEFT COLUMN ON DESKTOP -->
+  <!-- TOP SECTION ON PHONES -->
   <div id="column1">
 
     <img src="imgs/bbsite.png"
@@ -304,42 +330,12 @@
 
   </div>
 
-  <!-- RIGHT COLUMN -->
+  <!-- RIGHT COLUMN ON DESKTOP -->
+  <!-- MAIN TEXT BELOW IMAGE AND LINKS ON PHONES -->
   <div id="column2">
 
     <p>
-      I am currently a Ph.D. student in Jiefeng Jiang's
-      <a href="https://myweb.uiowa.edu/jiefjiang/Research.html"
-         class="hvr-bob"
-         style="color:#BACFCD;"
-         target="_blank"
-         rel="noopener">
-        <i><span>Lab for Adaptive Behavior</span></i>
-      </a>
-      in the Department of Psychological and Brain Sciences at UIowa.
-
-      Here, I am a member of the
-      <a href="https://psychology.uiowa.edu/bbip"
-         class="hvr-bob"
-         style="color:#BACFCD;"
-         target="_blank"
-         rel="noopener">
-        <span>Behavioral-Biomedical Training Program</span>
-      </a>
-      and the
-      <a href="https://cognitivecontrol.psychology.uiowa.edu/"
-         class="hvr-bob"
-         style="color:#BACFCD;"
-         target="_blank"
-         rel="noopener">
-        <span>C<sup>3</sup> (Cognitive Control Collaborative)</span>
-      </a>.
-
-      Broadly, I study learning and memory, and how costs for control guide
-      adaptive behavior and information storage through behavioral experiments,
-      neuroimaging, and computational modeling.
-
-      In the fall, I will be starting as a
+      Currently, I am a
       <a href="https://sof.dartmouth.edu/"
          class="hvr-bob"
          style="color:#004C3F;"
@@ -352,9 +348,32 @@
         Dartmouth College
       </span>
       working with Jonathan Phillips and Steven Frankland.
+
+      Broadly, I study learning and memory, and how costs for control guide
+      adaptive behavior and information storage through behavioral experiments,
+      neuroimaging, and computational modeling.
     </p>
 
     <p>
+      In 2026, I wrapped up my Ph.D. with Dr. Jiefeng Jiang in the
+      <a href="https://myweb.uiowa.edu/jiefjiang/Research.html"
+         class="hvr-bob"
+         style="color:#BACFCD;"
+         target="_blank"
+         rel="noopener">
+        <i><span>Lab for Adaptive Behavior</span></i>
+      </a>
+      in the Department of Psychological and Brain Sciences at UIowa.
+
+      Here, I was a member of the
+      <a href="https://cognitivecontrol.psychology.uiowa.edu/"
+         class="hvr-bob"
+         style="color:#BACFCD;"
+         target="_blank"
+         rel="noopener">
+        <span>C<sup>3</sup> (Cognitive Control Collaborative)</span>
+      </a>.
+
       Previously, I was a lab manager at Wouter Kool's
       <a href="http://www.wouterkool.com/"
          class="hvr-bob"
