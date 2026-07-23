@@ -179,26 +179,29 @@ nav a {
     margin: 0 auto;
   }
 
-  /* Put all five icons into one row on tablets and phones */
-  .icon-groups {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
-    margin-top: 14px;
-  }
+.icon-groups {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;      /* wraps if needed */
+    gap:10px;
+    width:100%;
+    max-width:100%;
+    margin:14px auto 0;
+}
 
-  .icon-row {
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
-    margin-top: 0;
-  }
-
-  .icon-row a {
-    width: 52px;
-    height: 52px;
-  }
+ .icon-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin:0;
+}
+.icon-row a{
+    width:44px;
+    height:44px;
+    flex-shrink:0;
+}
 
   .icon-row img {
     width: 100%;
@@ -248,10 +251,10 @@ nav a {
     gap: 10px;
   }
 
-  .icon-row a {
-    width: 46px;
-    height: 46px;
-  }
+ .icon-row a{
+    width:40px;
+    height:40px;
+}
 
   .icon-row img {
     width: 100%;
