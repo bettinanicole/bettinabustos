@@ -9,225 +9,241 @@
   <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
   <link href="css/main.css" rel="stylesheet" type="text/css">
 
-  <style>
-    html,
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: "Avenir Next", Avenir, Arial, sans-serif;
-    }
+<style>
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Avenir Next", Avenir, Arial, sans-serif;
+}
 
-    body {
-      margin: 0;
-      background-color: gray;
-    }
+body {
+  margin: 0;
+  background-color: gray;
+}
 
-    p.small {
-      line-height: 0.7;
-    }
+p.small {
+  line-height: 0.7;
+}
 
-    p.big {
-      line-height: 1.8;
-    }
+p.big {
+  line-height: 1.8;
+}
 
-    /* Navigation */
-    header {
-      color: #373737;
-    }
+/* -----------------------------
+   Navigation
+------------------------------*/
 
-    nav ul {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      margin: 0;
-      padding: 8px 16px;
-      font-size: 140%;
-      list-style: none;
-    }
+header {
+  color: #373737;
+}
 
-    nav a {
-      text-decoration: none;
-    }
+nav ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 140%;
+  list-style: none;
+}
 
-    .brain {
-      width: 90px;
-      max-width: 15%;
-      height: auto;
-      margin-left: auto;
-    }
+nav a {
+  text-decoration: none;
+}
 
-    .brain img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+.brain {
+  width: 90px;
+  margin-left: auto;
+}
 
-    /* Desktop layout: same two-column appearance */
-    #boxes {
-      display: flex;
-      align-items: flex-start;
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      box-sizing: border-box;
-    }
+.brain img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-    #column1 {
-      width: 30%;
-      padding: 1% 2%;
-      box-sizing: border-box;
-      flex-shrink: 0;
-    }
+/* -----------------------------
+   Desktop Layout
+------------------------------*/
 
-    #column2 {
-      width: 70%;
-      padding: 0 4%;
-      box-sizing: border-box;
-      font-size: 120%;
-      color: #373737;
-    }
+#boxes {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
 
-    .headshot {
-        display: block;
-        width: 100%;
-        max-width: 380px;
-        margin: 0 auto;
-    }
+#column1 {
+  width: 30%;
+  padding: 1% 2%;
+  box-sizing: border-box;
+}
 
-    .icon-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      margin-top: 8px;
-    }
+#column2 {
+  width: 70%;
+  padding: 0 4%;
+  box-sizing: border-box;
+  font-size: 120%;
+  color: #373737;
+}
+
+.headshot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.icon-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.icon-row a {
+  width: 56px;
+  height: 56px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-row img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+#column2 a {
+  overflow-wrap: anywhere;
+}
+
+/* -----------------------------
+   Tablets & Phones
+------------------------------*/
+
+@media (max-width: 768px) {
+
+  nav ul {
+    justify-content: center;
+    font-size: 110%;
+    padding: 10px;
+  }
+
+  .brain {
+    width: 55px;
+  }
+
+  #boxes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #column1,
+  #column2 {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  #column1 {
+    text-align: center;
+    order: 1;
+    padding-bottom: 8px;
+  }
+
+  #column2 {
+    order: 2;
+    text-align: center;
+    font-size: 105%;
+    line-height: 1.6;
+    padding-top: 0;
+  }
+
+  .headshot {
+    width: 90%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .icon-row {
+    justify-content: center;
+    gap: 18px;
+    margin-top: 14px;
+  }
 
   .icon-row a {
     width: 52px;
     height: 52px;
+  }
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.icon-row img {
+  .icon-row img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  #column2 p {
+    max-width: 650px;
+    margin: 14px auto;
+  }
 }
-    #column2 p {
-    text-align: center;
+
+/* -----------------------------
+   Small Phones
+------------------------------*/
+
+@media (max-width: 480px) {
+
+  nav ul {
+    font-size: 100%;
+    padding: 8px;
+  }
+
+  .brain {
+    display: none;
+  }
+
+  #column1,
+  #column2 {
+    padding: 15px;
+  }
+
+  .headshot {
+    width: 95%;
+    max-width: 320px;
+  }
+
+  .icon-row {
+    gap: 14px;
+  }
+
+  .icon-row a {
+    width: 46px;
+    height: 46px;
+  }
+
+  .icon-row img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  #column2 {
+    font-size: 100%;
+    line-height: 1.55;
+  }
 }
-    #column2 {
-        text-align: center;
-    }
-    #column2 a {
-      overflow-wrap: anywhere;
-    }
-
-    /* Phone layout */
-    @media screen and (max-width: 700px) {
-      nav ul {
-        justify-content: center;
-        padding: 6px;
-        font-size: 105%;
-      }
-
-      nav .w3-button {
-        padding: 8px 10px;
-      }
-
-      .brain {
-        width: 50px;
-        max-width: 12%;
-        margin-left: 4px;
-      }
-
-      /* Stack image, links, and text vertically */
-      #boxes {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-      }
-
-      #column1,
-      #column2 {
-        width: 100%;
-        float: none;
-      }
-
-      /* Image and links appear above the main text */
-      #column1 {
-        order: 1;
-        padding: 12px 20px 6px;
-      }
-
-      #column2 {
-        order: 2;
-        padding: 8px 20px 24px;
-        font-size: 105%;
-        line-height: 1.55;
-      }
-
-      .headshot {
-        width: 100%;
-        max-width: 380px;
-        margin: 0 auto;
-      }
-
-      .icon-row {
-        gap: 18px;
-        margin-top: 10px;
-      }
-
-      .icon-row img {
-        width: 48px;
-      }
-
-      #column2 p {
-        margin-top: 12px;
-        margin-bottom: 16px;
-      }
-    }
-
-    /* Extra-small phones */
-    @media screen and (max-width: 400px) {
-      nav ul {
-        font-size: 95%;
-      }
-
-      nav .w3-button {
-        padding: 7px 6px;
-      }
-
-      .brain {
-        display: none;
-      }
-
-      #column1,
-      #column2 {
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-
-      #column2 {
-        font-size: 100%;
-      }
-
-      .icon-row {
-        gap: 14px;
-      }
-
-      .icon-row img {
-        width: 44px;
-      }
-    }
-  </style>
+</style>
+  
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDG2L2PX2F"></script>
