@@ -92,9 +92,10 @@
     }
 
     .headshot {
-      display: block;
-      width: 100%;
-      height: auto;
+        display: block;
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
     }
 
     .icon-row {
@@ -105,18 +106,26 @@
       margin-top: 8px;
     }
 
-    .icon-row a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .icon-row a {
+    width: 52px;
+    height: 52px;
 
-    .icon-row img {
-      width: 55px;
-      max-width: 100%;
-      height: auto;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.icon-row img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+    #column2 p {
+    text-align: center;
+}
+    #column2 {
+        text-align: center;
+    }
     #column2 a {
       overflow-wrap: anywhere;
     }
