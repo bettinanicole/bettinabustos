@@ -99,9 +99,15 @@ nav a {
   height: auto;
 }
 
+/* Keep two icon rows on desktop */
+.icon-groups {
+  display: block;
+}
+
 .icon-row {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 14px;
   margin-top: 10px;
 }
@@ -109,10 +115,10 @@ nav a {
 .icon-row a {
   width: 56px;
   height: 56px;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .icon-row img {
@@ -162,7 +168,6 @@ nav a {
 
   #column2 {
     order: 2;
-    text-align: center;
     font-size: 105%;
     line-height: 1.6;
     padding-top: 0;
@@ -174,10 +179,20 @@ nav a {
     margin: 0 auto;
   }
 
+  /* Put all five icons into one row on tablets and phones */
+  .icon-groups {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
   .icon-row {
     justify-content: center;
-    gap: 18px;
-    margin-top: 14px;
+    align-items: center;
+    gap: 14px;
+    margin-top: 0;
   }
 
   .icon-row a {
@@ -191,9 +206,12 @@ nav a {
     object-fit: contain;
   }
 
+  /* Center the text area, but keep paragraphs left-aligned */
   #column2 p {
+    width: 100%;
     max-width: 650px;
     margin: 14px auto;
+    text-align: left;
   }
 }
 
@@ -222,8 +240,12 @@ nav a {
     max-width: 320px;
   }
 
+  .icon-groups {
+    gap: 10px;
+  }
+
   .icon-row {
-    gap: 14px;
+    gap: 10px;
   }
 
   .icon-row a {
@@ -243,7 +265,6 @@ nav a {
   }
 }
 </style>
-  
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDG2L2PX2F"></script>
@@ -304,57 +325,62 @@ nav a {
          alt="Headshot of Bettina Bustos"
          class="headshot">
 
-    <!-- ICON ROW 1 -->
-    <div class="icon-row">
-      <a href="mailto:bbustos@uiowa.edu"
-         aria-label="Email Bettina Bustos">
-        <img src="imgs/email_i.png"
-             class="hvr-bob"
-             alt="Email">
-      </a>
+    <!-- Keeps two rows on desktop and creates one row on phones -->
+    <div class="icon-groups">
 
-      <a href="https://github.com/bettinanicole"
-         target="_blank"
-         rel="noopener"
-         aria-label="GitHub profile">
-        <img src="imgs/gits.png"
-             class="hvr-bob"
-             alt="GitHub">
-      </a>
+      <!-- ICON ROW 1 -->
+      <div class="icon-row">
+        <a href="mailto:bbustos@uiowa.edu"
+           aria-label="Email Bettina Bustos">
+          <img src="imgs/email_i.png"
+               class="hvr-bob"
+               alt="Email">
+        </a>
 
-      <a href="https://osf.io/5r34d/"
-         target="_blank"
-         rel="noopener"
-         aria-label="Open Science Framework profile">
-        <img src="imgs/opensci.png"
-             class="hvr-bob"
-             alt="Open Science Framework">
-      </a>
-    </div>
+        <a href="https://github.com/bettinanicole"
+           target="_blank"
+           rel="noopener"
+           aria-label="GitHub profile">
+          <img src="imgs/gits.png"
+               class="hvr-bob"
+               alt="GitHub">
+        </a>
 
-    <!-- ICON ROW 2 -->
-    <div class="icon-row">
-      <a href="https://bsky.app/profile/bettinanb.bsky.social"
-   target="_blank"
-   rel="noopener"
-   aria-label="Bluesky profile">
-    <img src="imgs/bluesky.png"
-         class="hvr-bob"
-         alt="Bluesky">
-</a>
-      <a href="https://scholar.google.com/citations?user=i1YvwNEAAAAJ&hl=en"
-         target="_blank"
-         rel="noopener"
-         aria-label="Google Scholar profile">
-        <img src="imgs/googlescholar.png"
-             class="hvr-bob"
-             alt="Google Scholar">
-      </a>
+        <a href="https://osf.io/5r34d/"
+           target="_blank"
+           rel="noopener"
+           aria-label="Open Science Framework profile">
+          <img src="imgs/opensci.png"
+               class="hvr-bob"
+               alt="Open Science Framework">
+        </a>
+      </div>
+
+      <!-- ICON ROW 2 -->
+      <div class="icon-row">
+        <a href="https://bsky.app/profile/bettinanb.bsky.social"
+           target="_blank"
+           rel="noopener"
+           aria-label="Bluesky profile">
+          <img src="imgs/bluesky.png"
+               class="hvr-bob"
+               alt="Bluesky">
+        </a>
+
+        <a href="https://scholar.google.com/citations?user=i1YvwNEAAAAJ&hl=en"
+           target="_blank"
+           rel="noopener"
+           aria-label="Google Scholar profile">
+          <img src="imgs/googlescholar.png"
+               class="hvr-bob"
+               alt="Google Scholar">
+        </a>
+      </div>
+
     </div>
 
   </div>
-
-  <!-- RIGHT COLUMN ON DESKTOP -->
+    <!-- RIGHT COLUMN ON DESKTOP -->
   <!-- MAIN TEXT BELOW IMAGE AND LINKS ON PHONES -->
   <div id="column2">
 
